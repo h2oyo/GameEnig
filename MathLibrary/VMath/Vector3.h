@@ -93,3 +93,17 @@ inline Vector3 normal(const Vector3 &a)
     //assert(magnitude() != 0 && "Divide by Zero");
     return a / a.magnitude();
 }
+inline Vector3 min(const Vector3 &a, const Vector3 &b) { return{ std::fminf(a.x, b.x), std::fminf(a.y, b.y),std::fminf(a.z, b.z) }; }
+inline Vector3 max(const Vector3 &a, const Vector3 &b) { return{ std::fmaxf(a.x, b.x), std::fminf(a.y, b.y),std::fminf(a.z, b.z) }; }
+
+inline Vector3 clamp(const Vector3 &val, const Vector3 &lower, const Vector3 &upper)
+{
+	return max(min(val, upper), lower);
+}
+
+inline Vector3 snap(const Vector3 &val, const Vector3 &lower, const Vector3 &upper)
+{
+	return{ val.x - lower.x < upper.x - val.x ? lower.x : upper.x,
+		val.y - lower.y < upper.y - val.y ? lower.y : upper.y,
+		val.z - lower.z < upper.z - val.z ? lower.z : upper.z };
+}

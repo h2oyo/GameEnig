@@ -39,9 +39,7 @@ inline CollisionData iTest(const Circle &a, const Circle &b)
 
 inline CollisionData iTest(const AABB &a, const AABB &b)
 {
-    // DSAT calculates the Separating Axis Theorem in 1-D
-    // We can calculate the results along the x and y axis separately,
-    // and just pick the shortest one
+ 
     auto cdx = DSAT(a.min().x, a.max().x, b.min().x, b.max().x, { 1, 0 });
     auto cdy = DSAT(a.min().y, a.max().y, b.min().y, b.max().y, { 0, 1 });
 
@@ -57,10 +55,7 @@ inline CollisionData iTest(Circle a, const AABB &b)
     // and just use the circle vs circle test.
     Circle cp = { snap(a.position, b.min(), b.max()), 0 };
 
-    // If the circle's position was inside of the AABB
-    // And we use the clamp, our normal will get messed up.
-    // To fix that, we need to know whether we clamped from outside
-    // or snapped from inside. If so, we need to swap the operands.
+  
     if (b.min() < a.position && a.position < b.max())
         std::swap(a, cp);
 

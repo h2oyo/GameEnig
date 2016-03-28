@@ -37,7 +37,7 @@ struct Matrix3
         return r;
     }
 
-    // angle, in degrees
+   
     static Matrix3 rotate(float angle)
     {
         Matrix3 r = identity();
@@ -90,4 +90,17 @@ inline Vector3 operator*(const Matrix3 &_A, const Vector3 &b)
     r.z = dot(A.c[2], b);
 
     return r;
+}
+inline Matrix3 operator+(const Matrix3 & a, const Matrix3 & b)
+{
+	(a.m[3][3] + b.m[3][3]);
+
+	return Matrix3();
+}
+
+inline Matrix3 operator-(const Matrix3 & a, const Matrix3 & b)
+{
+	(a.m[3][3] - b.m[3][3]);
+
+	return Matrix3();
 }
