@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+  <Type Name="Handle&lt;*&gt;">
+    <DisplayString>{{value={(*dataref)[index]}}}</DisplayString>
+    <Expand>
+      <Item Name="index">index</Item>
+      <Item Name="value">(*dataref)[index]</Item>
+    </Expand>
+  </Type>
+
+</AutoVisualizer>
