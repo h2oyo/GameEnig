@@ -116,3 +116,15 @@ inline Vector2 snap (const Vector2 &val, const Vector2 &lower, const Vector2 &up
     return {val.x - lower.x < upper.x - val.x ? lower.x : upper.x,
             val.y - lower.y < upper.y - val.y ? lower.y : upper.y};
 }
+inline Vector2 lerp(const Vector2 &start, const Vector2 &end, float t)
+{
+	return (end - start)* t + start;
+}
+inline Vector2 mix(const Vector2 &start, const Vector2 &end, float t)
+{
+	return start*(1 - t) + end*(t);
+}
+inline Vector2 reflect(const Vector2 &incident, const Vector2 &normal)
+{
+	return incident - 2 * dot(incident, normal) * normal;
+}
