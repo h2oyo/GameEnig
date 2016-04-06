@@ -26,7 +26,14 @@ struct Matrix3
     
     float determinant();
 
-    Matrix3 inverse();
+    Matrix3 inverse()
+	{
+		Matrix3 r;
+		r.c[0] = Vector3(m[0][0], m[1][0], m[2][0]);
+		r.c[1] = Vector3(m[0][1], m[1][1], m[2][1]);
+		r.c[2] = Vector3(m[0][2], m[1][2], m[2][2]);
+		return r;
+	};
 
     static Matrix3 identity()
     {
@@ -93,14 +100,20 @@ inline Vector3 operator*(const Matrix3 &_A, const Vector3 &b)
 }
 inline Matrix3 operator+(const Matrix3 & a, const Matrix3 & b)
 {
-	(a.m[3][3] + b.m[3][3]);
+	Matrix3 r;
+	for (unsigned i = 0; i < 3; ++i) // for every column
+		for (unsigned j = 0; j < 3; ++j) // for every value in each column
+			r[i][j] = a.m[i][j] + b.m[i][j];
 
-	return Matrix3();
+	return r;
 }
 
 inline Matrix3 operator-(const Matrix3 & a, const Matrix3 & b)
 {
-	(a.m[3][3] - b.m[3][3]);
+	Matrix3 r;
+	for (unsigned i = 0; i < 3; ++i) // for every column
+		for (unsigned j = 0; j < 3; ++j) // for every value in each column
+			r[i][j] = a.m[i][j] - b.m[i][j];
 
-	return Matrix3();
+	return r;
 }

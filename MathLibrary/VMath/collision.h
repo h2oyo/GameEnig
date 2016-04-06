@@ -62,25 +62,32 @@ inline CollisionData iTest(Circle a, const AABB &b)
     // circle circle test
     return iTest(a, cp);
 }
+inline CollisionData iTest(const Circle &a, const Circle &b)
+{
+	CollisionData cd;
+	if ((b.position.x - a.position.x)*(b.position.x - a.position.x)
+		+ (b.position.y - a.position.y)*(b.position.y - a.position.y)
+		<= (a.radius + b.radius)*(a.radius + b.radius));
+	return cd;
+};
 
 // Some distance formula
 //float point_plane_dist  (const Vector2 &a, const Plane &b);
 //float ray_plane_dist    (const Ray     &a, const Plane &b);
 //
 //
-//// All of the basic tests
-//CollisionData iTest(const AABB   &a, const AABB   &b);
+
 //CollisionData iTest(const AABB   &a, const Circle &b);
 //CollisionData iTest(const AABB   &a, const Ray    &b);
 //CollisionData iTest(const AABB   &a, const Plane  &b);
 //
-//CollisionData iTest(const Circle &a, const Circle &b);
+
 //CollisionData iTest(const Circle &a, const Plane  &b);
 //CollisionData iTest(const Circle &a, const Ray    &b);
 //
 //CollisionData iTest(const Ray    &a, const Plane  &b);
 //
-//
+// 
 //// Convex Hull vs remaining shapes
 //CollisionData iTest(const ConvexHull &A, const ConvexHull &B);
 //CollisionData iTest(const ConvexHull &A, const Circle     &b);
